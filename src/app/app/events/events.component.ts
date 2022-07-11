@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-events',
-  template: `<event-thumb (eventclick)="handleeventclick($event)" [event]=event1 ></event-thumb>`,
+  template: `<event-thumb #thumbnail (eventclick)="handleeventclick($event)" [event]=event1 ></event-thumb>`,
   styleUrls: ['./events.component.css']
 })
 export class EventsComponent implements OnInit {

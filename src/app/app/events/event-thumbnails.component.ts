@@ -12,8 +12,13 @@ export class Eventsthumbnail  {
 
   //communicate parent component
   @Output() eventclick=new EventEmitter()
+  somevariable:any="new value"
 
   handleclick(){
    this.eventclick.emit(this.event.name)
+  }
+
+  templatefoo(){
+    console.log("template variable will be show on")
   }
 }
