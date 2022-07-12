@@ -3,13 +3,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { EventsComponent } from './app/events/events.component';
 import { Eventsthumbnail } from './app/events/event-thumbnails.component';
+import { DirectivesComponent } from './directives/directives.component';
+import { ChildcomponentComponent } from './childcomponent/childcomponent.component';
+import { ParentcomponentComponent } from './parentcomponent/parentcomponent.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     EventsComponent,
-    Eventsthumbnail
+    Eventsthumbnail,
+    DirectivesComponent,
+    ChildcomponentComponent,
+    ParentcomponentComponent,
+   
   ],
   imports: [
     BrowserModule,
