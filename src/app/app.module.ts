@@ -6,6 +6,7 @@ import { Eventsthumbnail } from './app/events/event-thumbnails.component';
 import { DirectivesComponent } from './directives/directives.component';
 import { ChildcomponentComponent } from './childcomponent/childcomponent.component';
 import { ParentcomponentComponent } from './parentcomponent/parentcomponent.component';
+import { PipesComponent } from './pipes/pipes.component';
 
 
 
@@ -17,6 +18,7 @@ import { ParentcomponentComponent } from './parentcomponent/parentcomponent.comp
     DirectivesComponent,
     ChildcomponentComponent,
     ParentcomponentComponent,
+    PipesComponent,
    
   ],
   imports: [
