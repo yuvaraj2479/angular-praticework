@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServiceService } from '../service.service';
 
 @Component({
   selector: 'app-pipes',
@@ -42,10 +43,13 @@ import { Component, OnInit } from '@angular/core';
   <h2>{{date|date:'short'}}</h2>
   <h2>{{date|date:'shortDate'}}</h2>
   <h2>{{date|date:'shortTime'}}</h2>
+
+
+  <h1>{{employee}}</h1>
   `,
 
 })
-export class PipesComponent  {
+export class PipesComponent implements OnInit {
 
   content="hey codeevolution"
   jsondata={
@@ -53,5 +57,14 @@ export class PipesComponent  {
     "lastname":"yuva"
   }
 
+  employee=[];
+
+
   date=new Date()
+
+  constructor(private employeeservice:ServiceService){}
+
+  ngOnInit(): void {
+    this.employeeservice.getEmployee();
+  }
 }

@@ -7,8 +7,10 @@ import { DirectivesComponent } from './directives/directives.component';
 import { ChildcomponentComponent } from './childcomponent/childcomponent.component';
 import { ParentcomponentComponent } from './parentcomponent/parentcomponent.component';
 import { PipesComponent } from './pipes/pipes.component';
-
-
+import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule} from './app-routing.module';
+import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,10 +21,14 @@ import { PipesComponent } from './pipes/pipes.component';
     ChildcomponentComponent,
     ParentcomponentComponent,
     PipesComponent,
+    LoginComponent,
    
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
