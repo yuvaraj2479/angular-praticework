@@ -20,13 +20,13 @@
 
 .mainpage {
     height: 100vh;
-    background-image: linear-gradient(to right, #c6ffdd, #fbd786, #f7797d);
+  background-image: linear-gradient(to right, #c6ffdd, #fbd786, #f7797d);
+  
+
+
 }
 
 .formbg{
    background-color: rgba(0, 0, 0, 0.2);
    
 }
-
-
-

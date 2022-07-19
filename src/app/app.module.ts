@@ -10,7 +10,8 @@ import { PipesComponent } from './pipes/pipes.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule} from './app-routing.module';
 import { LoginComponent } from './login/login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -22,13 +23,15 @@ import { FormsModule } from '@angular/forms';
     ParentcomponentComponent,
     PipesComponent,
     LoginComponent,
+    RegisterComponent,
    
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

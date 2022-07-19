@@ -3,12 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { PipesComponent } from './pipes/pipes.component';
 import { DirectivesComponent } from './directives/directives.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
   
 const routes: Routes = [
   { path: 'first', component: PipesComponent },
   {path:'second',component:    DirectivesComponent},
   { path: 'login', component: LoginComponent},
+  {path:'register',component:RegisterComponent},
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', component: PipesComponent },
  
