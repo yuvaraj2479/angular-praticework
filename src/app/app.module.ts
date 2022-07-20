@@ -24,6 +24,7 @@ import { RegisterComponent } from './register/register.component';
     PipesComponent,
     LoginComponent,
     RegisterComponent,
+    
    
   ],
   imports: [
