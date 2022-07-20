@@ -1,77 +1,80 @@
-
-  <div class="container-fluid mainpage">
-    <div class="d-flex justify-content-start col-3 "> 
-      <table class="table table-bordered border-dark mt-2">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Username</th>
-            <th scope="col">Email</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody>
-      </table>
-</div> 
-    
-    <div class=" row aligh-items-center justify-content-center  h-100">
-      
-      <div class="col-lg-4 col-md-6 col-sm-6">
-        
+<div class="container-fluid mainpage">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="aligh-items-center justify-content-center  h-100">
         <div class=" myForm card shadow formbg ">
-          
           <div class="card-title text-center border-bottom ">
             <div class="mb-2">
-              <label for="username" class="form-label mt-4  ">Register Form</label>
+              <label for="username" class="form-label mt-4 ">Register Form</label>
             </div>
           </div>
           <div class="card-body d-grid gap-3 ">
-            <form  class="form-group" [formGroup]="registerForm" (ngSubmit)="registeruser()">
-              <label for="username" class="form-label" >Username</label>
-              <input type="text"   class="form-control" id="username" name="username"  formControlName="username" />
+            <form class="form-group" [formGroup]="registerForm" (ngSubmit)="registeruser()">
+              <div>
+              <label for="username" class="form-label">Username</label>
+              <input type="text" class="form-control" id="username" name="username" formControlName="username"/>
+            </div>
+              <div *ngIf="validate['username'].invalid && (validate['username'].dirty || validate['username'].touched)"  class="alert alert-danger">
+                <small class="text-danger" *ngIf="validate['username'].errors && validate['username'].errors['required']">username is required</small>
+                <small class="text-danger" *ngIf="validate['username'].errors && validate['username'].errors['minlength']">username must be atleast 2 characters</small>
+              </div>
               <div class="mb-4 pt-4">
                 <label for="Email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="password"  formControlName="email" />
+                <input type="email" class="form-control" id="email" name="password" formControlName="email" />
+                <div *ngIf="validate['email'].invalid && (validate['email'].dirty || validate['email'].touched)"  class="alert alert-danger">
+                  <small class="text-danger" *ngIf="validate['email'].errors && validate['email'].errors['required']">Email is required</small>
+                  <small class="text-danger" *ngIf="validate['email'].errors && validate['email'].errors['email']">Please Enter valid email address.</small>
+                </div>
               </div>
               <div class="mb-4">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password" formControlName="password"  />
+                <input type="password" class="form-control" id="password" name="password" formControlName="password" />
+                <div *ngIf="validate['password'].invalid && (validate['password'].dirty || validate['password'].touched)"  class="alert alert-danger">
+                  <small class="text-danger" *ngIf="validate['password'].errors && validate['password'].errors['required']">Password is required</small>
+                  <small class="text-danger" *ngIf="validate['password'].errors && validate['password'].errors['pattern']">Password should be numeric only</small>
+                </div>
               </div>
               <div class="mb-4">
                 <label for="currentpassword" class="form-label">Confirm-Password</label>
-                <input type="password" class="form-control" id="confirmpassword" name="password"  formControlName="confirmPassword"/>
+                <input type="password" class="form-control" id="confirmpassword" name="password" formControlName="confirmPassword" />
+                <div *ngIf="validate['confirmPassword'].invalid && (validate['confirmPassword'].dirty || validate['confirmPassword'].touched)"  class="alert alert-danger">
+                  <small class="text-danger" *ngIf="validate['confirmPassword'].errors && validate['confirmPassword'].errors['required']">ConfirmPassword is required</small>
+                  <small class="text-danger" *ngIf="validate['confirmPassword'].errors && validate['confirmPassword'].errors['pattern']">ConfirmPassword should be numeric only</small>
+                </div>
               </div>
               <div class="d-grid">
-                <button type="submit" class="btn btn-primary main-sm" [disabled]="!registerForm.valid">Register</button>
+                <button type="submit" class="btn btn-primary main-sm" [disabled]="!registerForm.valid && registerForm.invalid">Register</button>
               </div>
               <div class="pt-3 d-flex justify-content-center">
                 <label for="password" class="form-label">Already have an account?</label>
-              <div>
-                <a class="mt-2 p-1" routerLink="/login">Login here</a>
-              </div> 
+                <div>
+                  <a class="mt-2 p-1" routerLink="/login">Login here</a>
+                </div>
               </div>
             </form>
           </div>
         </div>
       </div>
-      
     </div>
-   
+    <div class="d-flex justify-content-start col-lg-4  ">
+      <table class="table table-bordered border-dark mt-10 tableadjust">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let registerdata of registerdata">
+            <th scope="row">{{registerdata.id}}</th>
+            <td>{{registerdata.username}}</td>
+            <td>{{registerdata.email}}</td>
+            <td class="d-flex justify-content-center icon"><i class="bi bi-trash3-fill" (click)="deleteitem(registerdata)"></i></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-
-
+</div>

@@ -4,7 +4,7 @@
     min-width: 350px;
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 40%;
     transform: translate(-50%, -50%);
 }
 
@@ -21,12 +21,18 @@
 .mainpage {
     height: 100vh;
   background-image: linear-gradient(to right, #c6ffdd, #fbd786, #f7797d);
-  
-
 
 }
 
 .formbg{
    background-color: rgba(0, 0, 0, 0.2);
    
+}
+
+.tableadjust{
+    margin-top: 60px;
+}
+
+.icon:hover{
+   color:red
 }

@@ -11,19 +11,25 @@ export class ServiceService {
 
 
   postregister(data:any){
-    return  this.http.post<any>("http://localhost:3000/posts",data)
+    return  this.http.post<any>("http://localhost:3000/postregister",data)
     .pipe(map((res:any)=>{
       return res;
     }))
   }
 
-  getregister(data:any){
-    return  this.http.get<any>("http://localhost:3000/posts")
+  getallregister(){
+    return  this.http.get<any>("http://localhost:3000/postregister")
     .pipe(map((res:any)=>{
       return res;
     }))
   }
 
+  deleteregister(id:number){
+    return this.http.delete<any>("http://localhost:3000/postregister/"+id)
+    .pipe(map((res:any)=>{
+      return res;
+    }))
+  }
 
   
 }

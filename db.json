@@ -1,9 +1,18 @@
 {
-  "posts": [
+  "postregister": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "username": "yuvaraj",
+      "email": "yuvaraj2479@gmail.com",
+      "password": "123456",
+      "confirmPassword": "123456",
+      "id": 1
+    },
+    {
+      "username": "demo",
+      "email": "testing@gmail.com",
+      "password": "123456789",
+      "confirmPassword": "123456789",
+      "id": 2
     }
   ],
   "comments": [

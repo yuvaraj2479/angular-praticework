@@ -65,6 +65,6 @@ export class PipesComponent implements OnInit {
   constructor(private employeeservice:ServiceService){}
 
   ngOnInit(): void {
-    this.employeeservice.getEmployee();
+    // this.employeeservice.getEmployee();
   }
 }
