@@ -12,6 +12,10 @@ import { AppRoutingModule} from './app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import {ButtonModule} from 'primeng/button';
+import { ChangepasswordComponent } from './changepassword/changepassword.component';
+
 
 
 
@@ -26,6 +30,8 @@ import { RegisterComponent } from './register/register.component';
     PipesComponent,
     LoginComponent,
     RegisterComponent,
+    NavbarComponent,
+    ChangepasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +39,7 @@ import { RegisterComponent } from './register/register.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    ButtonModule
     
   ],
   providers: [],

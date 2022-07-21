@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ServiceService } from '../service.service';
 
 @Component({
   selector: 'app-pipes',
   template:`
  
+ <button (click)="changepassword()">Change password</button>
 <!-- string property type pipes -->
   <!-- lowercase -->
   <h2>{{content | lowercase}}</h2>
@@ -62,9 +64,13 @@ export class PipesComponent implements OnInit {
 
   date=new Date()
 
-  constructor(private employeeservice:ServiceService){}
+  constructor(private employeeservice:ServiceService,private router:Router){}
 
   ngOnInit(): void {
     // this.employeeservice.getEmployee();
+  }
+
+  changepassword(){
+  this.router.navigate(['/changepassword'])
   }
 }

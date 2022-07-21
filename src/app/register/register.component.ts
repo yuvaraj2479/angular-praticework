@@ -1,8 +1,9 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, } from '@angular/forms';
 import { ServiceService } from '../service.service';
 import { registermodel } from './registermodel';
+import { CustomValidators } from './Customvalidators';
 
 
 
@@ -16,21 +17,24 @@ export class RegisterComponent implements OnInit {
   constructor(private api: ServiceService) { }
   registerForm!: FormGroup
   registerdata!:any
+  adddata!:boolean
+  updatedata!:boolean
   //modeldata: registermodel = new registermodel()
 
   ngOnInit(): void {
+    this.adddata=true
+    this.updatedata=false
+
     this.registerForm = new FormGroup({
       username: new FormControl('',[Validators.required, Validators.minLength(3)]),
       email: new FormControl('', [Validators.required,Validators.email]),
       password: new FormControl('',[Validators.required,Validators.pattern('^[0-9]+$')]),
-      confirmPassword: new FormControl('', [Validators.required,Validators.pattern('^[0-9]+$')])
+      confirmPassword: new FormControl('',[Validators.required])
     },
-    // {
-    //   validators:this.Mustmatch('password','confirmPassword')
-    // }
-    
+    [CustomValidators.MatchValidator('password', 'confirmPassword')]
     )
     this.getAlluser()
+    
   }
 
 
@@ -39,22 +43,13 @@ export class RegisterComponent implements OnInit {
   }
 
 
-  // Mustmatch(password: any, confirmPassword: any) {
-  //   return (formGroup: FormGroup) => {
-  //     const passwordcontrol = formGroup.controls[password];
-  //     const confirmPasswordcontrol = formGroup.controls[confirmPassword];
-
-  //     if (confirmPasswordcontrol.errors && !confirmPasswordcontrol.errors['Mustmatch']) {
-  //       return;
-  //     }
-
-  //     if(passwordcontrol.value!==confirmPasswordcontrol.value){
-  //       confirmPasswordcontrol.setErrors({Mustmatch:true});
-  //     }else {
-  //       confirmPasswordcontrol.setErrors(null);
-  //     }
-  //   }
-  // }
+  get passwordMatchError() {
+    return (
+      this.registerForm.getError('mismatch') &&
+      this.registerForm.get('confirmPassword')?.touched
+    );
+  }
+  
 
   
 
@@ -102,4 +97,35 @@ export class RegisterComponent implements OnInit {
       }
     })
   }
+
+  edititem(registerdata:any){
+    this.adddata=false
+    this.updatedata=true
+
+    this.registerForm.controls['username'].setValue(registerdata.username)
+    this.registerForm.controls['email'].setValue(registerdata.email)
+    this.registerForm.controls['password'].setValue(registerdata.password)
+    this.registerForm.controls['confirmPassword'].setValue(registerdata.confirmPassword)
+  }
+
+  getdata(registerdata:any){
+     return this.registerdata=registerdata.id
+  }
+
+  updateitem(){
+    this.api.updateregister(this.registerForm.value,this.registerdata)
+    .subscribe({
+      next:(res=>{
+      alert("update succesfully")
+      this.registerForm.reset()
+      this.getAlluser()
+      this.adddata=true
+      this.updatedata=false
+    }),
+    error:((err=>{
+      alert("error updated")
+    }))
+  })
+  }
+
 }

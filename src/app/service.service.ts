@@ -31,5 +31,20 @@ export class ServiceService {
     }))
   }
 
+  updateregister(data:any,id:number){
+    return this.http.put<any>("http://localhost:3000/postregister/"+id,data)
+    .pipe(map((res:any)=>{
+      return res;
+    }))
+  }
+  
+  loginuser(){
+    return this.http.get("http://localhost:3000/postregister/")
+    .pipe(map((res:any)=>{
+      return res;
+    }))
+  }
+
+ 
   
 }

@@ -1,6 +1,6 @@
 <div class="container-fluid mainpage">
   <div class="row">
-    <div class="col-lg-8">
+    <div class="col-lg-6">
       <div class="aligh-items-center justify-content-center  h-100">
         <div class=" myForm card shadow formbg ">
           <div class="card-title text-center border-bottom ">
@@ -9,7 +9,7 @@
             </div>
           </div>
           <div class="card-body d-grid gap-3 ">
-            <form class="form-group" [formGroup]="registerForm" (ngSubmit)="registeruser()">
+            <form class="form-group" [formGroup]="registerForm" >
               <div>
               <label for="username" class="form-label">Username</label>
               <input type="text" class="form-control" id="username" name="username" formControlName="username"/>
@@ -35,15 +35,15 @@
                 </div>
               </div>
               <div class="mb-4">
-                <label for="currentpassword" class="form-label">Confirm-Password</label>
+                <label for="confirmpassword" class="form-label">Confirm-Password</label>
                 <input type="password" class="form-control" id="confirmpassword" name="password" formControlName="confirmPassword" />
-                <div *ngIf="validate['confirmPassword'].invalid && (validate['confirmPassword'].dirty || validate['confirmPassword'].touched)"  class="alert alert-danger">
-                  <small class="text-danger" *ngIf="validate['confirmPassword'].errors && validate['confirmPassword'].errors['required']">ConfirmPassword is required</small>
-                  <small class="text-danger" *ngIf="validate['confirmPassword'].errors && validate['confirmPassword'].errors['pattern']">ConfirmPassword should be numeric only</small>
+                <div *ngIf="passwordMatchError" class="alert alert-danger">
+                  Password does not match
                 </div>
               </div>
               <div class="d-grid">
-                <button type="submit" class="btn btn-primary main-sm" [disabled]="!registerForm.valid && registerForm.invalid">Register</button>
+                <button type="submit" *ngIf="adddata" class="btn btn-primary main-sm" [disabled]="!registerForm.valid && registerForm.invalid" (click)="registeruser()">SignUp</button>
+                <button type="button" *ngIf="updatedata" class="btn btn-primary main-sm" (click)="updateitem()" >Update</button>
               </div>
               <div class="pt-3 d-flex justify-content-center">
                 <label for="password" class="form-label">Already have an account?</label>
@@ -56,7 +56,7 @@
         </div>
       </div>
     </div>
-    <div class="d-flex justify-content-start col-lg-4  ">
+    <div class="d-flex justify-content-start col-lg-4  " style="margin-left: 155px;">
       <table class="table table-bordered border-dark mt-10 tableadjust">
         <thead>
           <tr>
@@ -71,7 +71,7 @@
             <th scope="row">{{registerdata.id}}</th>
             <td>{{registerdata.username}}</td>
             <td>{{registerdata.email}}</td>
-            <td class="d-flex justify-content-center icon"><i class="bi bi-trash3-fill" (click)="deleteitem(registerdata)"></i></td>
+            <td class="d-flex justify-content-center "><i class="bi bi-pencil-square px-3 edit" (click)="edititem(registerdata);getdata(registerdata)"></i><i class="bi bi-trash3-fill px-4 delete" (click)="deleteitem(registerdata)"></i></td>
           </tr>
         </tbody>
       </table>

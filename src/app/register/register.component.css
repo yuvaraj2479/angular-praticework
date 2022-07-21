@@ -20,7 +20,7 @@
 
 .mainpage {
     height: 100vh;
-  background-image: linear-gradient(to right, #c6ffdd, #fbd786, #f7797d);
+    background-image: linear-gradient(to right, #c6ffdd, #fbd786, #f7797d);
 
 }
 
@@ -31,8 +31,13 @@
 
 .tableadjust{
     margin-top: 60px;
+    
 }
 
-.icon:hover{
+.delete:hover{
    color:red
+}
+
+.edit:hover{
+    color:green
 }
