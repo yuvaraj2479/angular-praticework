@@ -1,24 +1,11 @@
 {
   "postregister": [
     {
-      "username": "janani",
-      "email": "janani@gmail.com",
-      "password": "1234562",
-      "confirmPassword": "123456",
-      "id": 1
-    },
-    {
-      "oldpassword": "",
-      "newpassword": "",
-      "confirmPassword": "",
+      "username": "raja",
+      "email": "yuva@gmail.com",
+      "password": "1234567",
+      "confirmpassword": "1234567",
       "id": 2
-    },
-    {
-      "username": "hari",
-      "email": "harikrishnan@gmail.com",
-      "password": "123456",
-      "confirmPassword": "123456",
-      "id": 3
     }
   ],
   "comments": [
