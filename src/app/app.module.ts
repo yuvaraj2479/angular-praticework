@@ -15,6 +15,7 @@ import { RegisterComponent } from './register/register.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import {ButtonModule} from 'primeng/button';
 import { ChangepasswordComponent } from './changepassword/changepassword.component';
+import { AuthgardGuard } from './authgard.guard';
 
 
 
@@ -42,7 +43,7 @@ import { ChangepasswordComponent } from './changepassword/changepassword.compone
     ButtonModule
     
   ],
-  providers: [],
+  providers: [AuthgardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

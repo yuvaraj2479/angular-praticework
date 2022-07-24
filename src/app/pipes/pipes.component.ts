@@ -7,6 +7,7 @@ import { ServiceService } from '../service.service';
   template:`
  
  <button (click)="changepassword()">Change password</button>
+ <button (click)="logout()">Logout</button>
 <!-- string property type pipes -->
   <!-- lowercase -->
   <h2>{{content | lowercase}}</h2>
@@ -72,5 +73,11 @@ export class PipesComponent implements OnInit {
 
   changepassword(){
   this.router.navigate(['/changepassword'])
+  }
+
+
+  logout(){
+    localStorage.clear()
+    this.router.navigate(['login'])
   }
 }

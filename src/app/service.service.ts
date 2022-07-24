@@ -45,6 +45,7 @@ export class ServiceService {
     }))
   }
 
- 
-  
+  isloggedin(){
+    return !!localStorage.getItem('username')
+}  
 }
